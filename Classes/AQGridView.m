@@ -338,6 +338,16 @@ NSString * const AQGridViewSelectionDidChangeNotification = @"AQGridViewSelectio
 	_gridData.rightPadding = inset;
 }
 
+- (CGFloat) topContentInset
+{
+	return ( _gridData.topPadding );
+}
+
+- (void) setTopContentInset:(CGFloat)topContentInset
+{
+	_gridData.topPadding = _headerView ? _headerView.bounds.size.height + topContentInset : topContentInset;
+}
+
 - (CGSize) gridCellSize
 {
 	return ( [_gridData cellSize] );
