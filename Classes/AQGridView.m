@@ -338,6 +338,16 @@ NSString * const AQGridViewSelectionDidChangeNotification = @"AQGridViewSelectio
 	_gridData.rightPadding = inset;
 }
 
+- (CGFloat) topContentInset
+{
+	return ( _gridData.topPadding );
+}
+
+- (void) setTopContentInset:(CGFloat)topContentInset
+{
+	_gridData.topPadding = _headerView ? _headerView.bounds.size.height + topContentInset : topContentInset;
+}
+
 - (CGSize) gridCellSize
 {
 	return ( [_gridData cellSize] );
@@ -1278,7 +1288,7 @@ NSString * const AQGridViewSelectionDidChangeNotification = @"AQGridViewSelectio
 - (BOOL) _gestureRecognizerIsHandlingTouches: (NSSet *) touches
 {
 	// see if the touch is (possibly) being tracked by a gesture recognizer
-	for ( id recognizer in self.gestureRecognizers )
+	for ( UIGestureRecognizer *recognizer in self.gestureRecognizers )
 	{
 		switch ( [recognizer state] )
 		{
